@@ -64,12 +64,9 @@ object Advent11 extends App {
       Field(str.split('\n').toVector.map(_.toVector))
   }
 
-  val data =
-    Using.resource(
-      Source.fromFile("/Users/amakhrov/Downloads/puzzle11-real.txt")
-    ) {
-      _.getLines().mkString("\n")
-    }
+  val data = Using.resource(Source.fromResource("./puzzle11-real.txt")) {
+    _.getLines().mkString("\n")
+  }
 
   val field = Field.fromString(data)
 

@@ -59,12 +59,9 @@ object Advent12 extends App {
     def initial(): Ship = Ship(0, 0, 10, -1)
   }
 
-  val data =
-    Using.resource(
-      Source.fromFile("/Users/amakhrov/Downloads/puzzle12-real.txt")
-    ) {
-      _.getLines().toList
-    }
+  val data = Using.resource(Source.fromResource("puzzle12-real.txt")) {
+    _.getLines().toList
+  }
 
   val instructions = data.map(Command.fromString)
 
